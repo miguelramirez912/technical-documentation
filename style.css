@@ -1,0 +1,108 @@
+
+body{
+    font-family: 'Open Sans', Arial, sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+/* Estilos de barra de navegacion */
+
+#navbar header{
+    text-align: center;
+    margin: 1rem auto;
+}
+header{
+    font-size: 2rem;
+    font-weight: bold;
+}
+#navbar ul{
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    height: 13rem;
+    overflow-y: scroll;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+}
+#navbar ul li{
+    border: 1px solid gray;
+    padding: .5rem 1.5rem;
+}
+.nav-link, a{
+    text-decoration: none;
+    color: darkslategray;
+}
+/* Estilos para el main */
+#main-doc{
+    width: 90%;
+    margin: auto;
+}
+#main-doc p{
+    text-align: justify;
+}
+.main-section{
+    margin-bottom: 2rem;
+}
+.main-section ul li{
+    margin-bottom: .75rem;
+}
+pre{
+    background-color: #dfdfdf;
+    border-left: 4px solid blue;
+    padding: 1rem;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+code{
+    background-color: #dfdfdf;
+    line-height: 1.5;
+    font-size: .9rem;
+    padding: 0 .25rem;
+}
+
+img{
+    width: 100%;
+    height: auto;
+}
+
+@media (min-width: 700px){
+    #navbar ul li{
+        padding: .5rem 2.5rem;
+    }
+}
+
+@media (min-width: 1000px){
+
+    #navbar{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 350px;
+        height: 100vh;
+        border-right: 3px solid darkolivegreen;
+    }
+    #navbar ul{
+        border: none;
+        height: 88%; /*Al contrario de lo que pareciera*/
+        overflow-y: unset;
+    }
+    #navbar ul li{
+        width: auto;
+        border: none;
+        border-top: 1px solid darkolivegreen;
+        padding: .9rem 1.5rem;
+    }
+    #main-doc{
+        position: absolute;
+        top: 0;
+        left: 350px;
+        right: 0;
+        width: 65%;
+        margin: auto;
+        padding: 2rem;
+        text-overflow: initial;
+    }
+    pre{
+        overflow-x: unset;
+    }
+}

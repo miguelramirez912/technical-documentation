@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentación Tecnica</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <nav id="navbar">
+        <header>Documentación React</header>
+        <ul>
+            <li><a href="#Hola,_React" class="nav-link">Hola, React</a></li>
+            <li><a href="#Casos_de_uso" class="nav-link">Casos de uso</a></li>
+            <li><a href="#¿Cómo_React_usa_JavaScript?" class="nav-link">¿Cómo React usa JavaScript?</a></li>
+            <li><a href="#Configurando_tu_primera_aplicación_React" class="nav-link">Configurando tu primera aplicación React</a></li>
+            <li><a href="#Explorando_nuestro_primer_componente_React" class="nav-link">Explorando nuestro primer componente React</a></li>
+            <li><a href="#Explorando_el_index" class="nav-link">Explorando el index</a></li>
+            <li><a href="#Variables_y_props" class="nav-link">Variables y props</a></li>
+            <li><a href="#Variables_en_JSX" class="nav-link">Variables en JSX</a></li>
+            <li><a href="#Props_de_componentes" class="nav-link">Props de componentes</a></li>
+            <li><a href="#Resumen" class="nav-link">Resumen</a></li>
+            <li><a href="#Referencia" class="nav-link">Referencia</a></li>
+
+        </ul>
+    </nav>
+
+    <main id="main-doc">
+        <section class="main-section" id="Hola,_React">
+            <header >Hola, React</header>
+            <p>Como su eslogan oficial señala, React es una biblioteca para construir interfaces de usuario. React no es un framework — ni siquiera se limita a la web. React es utilizado con otras bibliotecas para renderizar en ciertos entornos. Por ejemplo, React Native puede usarse para desarrollar aplicaciones móviles; React 360 permite crear aplicaciones de realidad virtual; además de otras posibilidades.</p>
+            <p>Al desarrollar para la web, los desarrolladores usan React en conjunto con ReactDOM. React y ReactDOM son, a menudo, considerados al igual que —y utilizados para resolver los mismo problemas que— otros verdaderos frameworks de desarrollo web. Cuando nos referimos a React como un "framework", estamos trabajando con este significado coloquial.</p>
+        </section>
+
+        <section class="main-section" id="Casos_de_uso">
+            <header>Casos de uso</header>
+            <p>A diferencia de los otros frameworks vistos en este módulo, React no impone reglas estrictas sobre convenciones de código u organización de archivos. Esto le permite a los equipos establecer las convenciones que funcionen mejor para ellos y adoptar React de la manera en que deseen. React puede manejar un solo botón, algunas piezas de una interfaz o la interfaz de usuario completa de una aplicación.</p>
+            <p>Si bien React puede usarse para pequeñas piezas de una interfaz, no resulta tan sencillo "introducirlo" en una aplicación como sería el caso de una biblioteca como jQuery —o incluso de un framework, como Vue—, por lo que viene a ser más abordable cuando construimos una aplicación completamente con React.</p>
+            <p>Además, muchos de los beneficios de la experiencia del desarrollador de una aplicación React, como codificar interfaces con JSX, requieren un proceso de compilación. Agregar un compilador como Babel a un sitio web hace que el código se ejecute de manera lenta, por lo que los desarrolladores a menudo configuran dichas herramientas con un paso de compilación. Podrá decirse que React tiene un gran requisito de herramientas, pero se puede aprender.</p>
+            <p>Este artículo se enfocará en el caso de uso de usar React para renderizar la interfaz de usuario completa de una aplicación, usando herramientas proporcionadas por la propia herramienta de Facebook <code>create-react-app</code>.</p>
+        </section>
+
+        <section class="main-section" id="¿Cómo_React_usa_JavaScript?">
+            <header>¿Cómo React usa JavaScript?</header>
+            <p>React utiliza características modernas de JavaScript para muchos de sus patrones. El punto donde más se aleja de JavaScript se refleja en el uso de la sintaxis JSX, la que, a su vez, amplía la sintaxis de JavaScript para que código similar a HTML pueda formar parte del mismo. Por ejemplo:</p>
+            <pre><code>const heading = &lt;h1<span>></span> Mozilla Developer Network&lt;<span>/</span> h1<span>></span>;</code></pre>
+            <p>Esta constante "heading" se conoce como una expresión JSX. React puede usarla para representar la etiqueta &lt;h1<span>></span> en nuestra aplicación.</p>
+            <p>Supongamos que, por razones semánticas, queremos envolver nuestro encabezado en una etiqueta &lt;header&gt;. El enfoque JSX nos permite anidar nuestros elementos entre sí, tal como lo hacemos con HTML:</p>
+            <pre><code>const header = (
+  &lt;header&gt;
+      &lt;h1&gt;Mozilla Developer Network&lt;/h1&gt;
+  &lt;/header&gt;
+      );</code></pre>
+            <p>Los paréntesis no tienen ningún efecto en la aplicación. Son una señal para ti (y tu computadora) de que las múltiples líneas de código que contiene forman parte de una misma expresión.</p>
+            <p>Por supuesto, tu navegador no puede leer JSX sin ayuda. Al compilarla (usando una herramienta como Babel o Parcel), nuestra expresión de encabezado se vería así:</p>
+            <pre><code>const header = React.createElement("header", null,
+  React.createElement("h1", null, "Mozilla Developer Network")
+  );           </code></pre>
+             <p>Es posible omitir el paso de la compilación y usar <code>React.createElement()</code> para codificar la interfaz de usuario tú mismo. Sin embargo, al hacer esto, perderías el beneficio declarativo de JSX y tu código resultaría más difícil de leer. La compilación es un paso adicional en el proceso de desarrollo, pero muchos desarrolladores de la comunidad React piensan que la legibilidad de JSX vale la pena. Además, las herramientas populares hacen que la compilación de JSX a JavaScript sea parte de su proceso de configuración. No tendrás que configurar la compilación tú mismo, a menos que así lo quieras.</p>
+             <p>Dado que JSX es una combinación de HTML y JavaScript, algunos desarrolladores lo encuentran intuitivo. Otros dicen que su naturaleza combinada lo hace confuso. Sin embargo, una vez que te sientas cómodo con JSX, te permitirá crear interfaces de usuario de forma más rápida e intuitiva, y permitirá que otros comprendan mejor tu base de código de un vistazo.</p>   
+
+        </section>
+
+        <section class="main-section" id="Configurando_tu_primera_aplicación_React">
+            <header>Configurando tu primera aplicación React</header>
+            <p>Hay muchas maneras de usar React, pero usaremos la herramienta <code>create-react-app</code> de la interfaz de línea de comandos (CLI, por sus siglas en inglés), como se mencionó anteriormente, la cual acelera el proceso de desarrollo de una aplicación React al instalar algunos paquetes y crear algunos archivos por ti, manejando las herramientas descritas anteriormente.</p>
+            <p>Para usar <code>create-react-app</code>, necesitas tener instalado Node.js. Se recomienda utilizar la versión de soporte a largo plazo (LTS, por sus siglas en inglés). Node incluye npm (el administrador de paquetes de nodos), y npx (el ejecutor de paquetes de nodos).</p>
+            <p>También ten en cuenta que React y ReactDOM producen aplicaciones que solo funcionan en un conjunto bastante moderno de navegadores (IE9+ a través de algunos polyfills). Se recomienda el uso de un navegador moderno como Firefox, Safari o Chrome cuando trabajes con estos tutoriales.</p>
+            <p><code>create-react-app</code> recibe un argumento: el nombre que te gustaría darle a tu aplicación. <code>create-react-app</code> usa este nombre para crear una nueva carpeta, luego crea los archivos necesarios dentro de la misma. Asegúrate de <code>cd</code> al lugar donde te gustaría que se guarde tu aplicación en tu disco duro, luego ejecuta lo siguiente en tu terminal:</p>
+            <pre><code>npx create-react-app moz-todo-react</code></pre>
+            <p>Esto crea una carpeta <code>moz-todo-react</code>, y hace varias cosas dentro de la misma:</p>
+            <ul>
+                <li>Instala algunos paquetes npm esenciales para la funcionalidad de la aplicación.</li>
+                <li>Escribe scripts para iniciar y servir la aplicación.</li>
+                <li>Crea una estructura de archivos y carpetas que definen la arquitectura básica de la aplicación.</li>
+                <li>Inicializa la carpeta como un repositorio de git, si tienes git instalado en tu computadora.</li>
+            </ul>
+            <p><code>create-react-app</code> mostrará una serie de mensajes en tu terminal mientras opera. Esto puede tardar unos minutos. Una vez completado el proceso,<code>cd</code> a la carpeta <code>moz-todo-react</code> y ejecuta el comando <code>npm start</code>. Los scripts instalados por <code>create-react-app</code> comenzarán a servirse en un servidor local en <code>localhost:3000</code> y abrirán la aplicación en una nueva pestaña del navegador. Tu navegador mostrará algo como esto:</p>
+            <img src="https://mdn.mozillademos.org/files/17203/default-create-react-app.png" alt="">
+            <p>La estructura inicial de archivos en nuestra carpeta luce así:</p>
+            <pre>
+            moz-todo-react
+              ├── README.md
+              ├── node_modules
+              ├── package.json
+              ├── package-lock.json
+              ├── .gitignore
+              ├── public
+              │   ├── favicon.ico
+              │   ├── index.html
+              │   └── manifest.json
+              └── src
+                  ├── App.css
+                  ├── App.js
+                  ├── App.test.js
+                  ├── index.css
+                  ├── index.js
+                  ├── logo.svg
+                  └── serviceWorker.js</pre>
+            <p>La carpeta <code><strong>src</strong></code> es donde pasaremos la mayor parte de nuestro tiempo, ya que es donde reside el código fuente de nuestra aplicación.</p>
+            <p>La carpeta <code><strong>public</strong></code> contiene archivos que serán leidos por tu navegador mientras desarrollas la aplicación; el más importante de ellos es <code>index.html</code>. React introduce tu código en este archivo de manera que tu navegador pueda ejecutarlo. Hay alguno que otro marcado que ayuda a <code>create-react-app</code> a funcionar, así que ten cuidado de no editarlo a menos que sepas lo que estás haciendo. Deberías cambiar el texto dentro del elemento <code>title</code> en este archivo para reflejar el título de tu aplicación. ¡Los títulos de página precisos son importantes para la accesibilidad!</p>
+            <p>El archivo <code>package.json</code> contiene información sobre nuestro proyecto que Node.js/npm usa para mantenerlo organizado.</p>
+        </section>
+        
+        <section class="main-section" id="Explorando_nuestro_primer_componente_React">
+            <header>Explorando nuestro primer componente React</header>
+            <p>En React, un <strong>componente</strong> es un módulo reutilizable que representa una parte de nuestra aplicación. Estas partes pueden ser grandes o pequeñas, pero, generalmente, están bien definidas: tienen un propósito único y obvio.</p>
+            <p>Abramos <code>src/App.js</code>, ya que nuestro navegador nos pide que lo editemos. Este archivo contiene nuestro primer componente —App—, y algunas otras líneas de código:</p>
+            <pre><code>import React from 'react';
+import logo from './logo.svg';
+import './App.css';
+
+function App() {
+    return (
+    &lt;div className="App">
+        &lt;header className="App-header">
+        &lt;img src={logo} className="App-logo" alt="logo" />
+        &lt;p>
+            Edit &lt;code>src/App.js&lt;/code> and save to reload.
+        &lt;/p>
+        &lt;a
+            className="App-link"
+            href="https://reactjs.org"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            Learn React
+        &lt;/a>
+        &lt;/header>
+    &lt;/div>
+    );
+}
+export default App;</code></pre>
+            <p>El archivo <code>App.js</code> se compone de tres partes principales: algunas declaraciones import en la parte superior, el componente App en el medio, y una declaración export en la parte inferior. La mayoría de los componentes de React siguen este patrón.</p>
+            <p>Las declaraciones import en la parte superior del archivo le permiten a App.js utilizar código que ha sido definido en otra parte. Revisemos estas declaraciones más detalladamente.</p>
+            <pre><code>import React from 'react';
+import logo from './logo.svg';
+import './App.css';</code></pre>
+            <p>La primera declaración importa la biblioteca React como tal. Dado que React convierte el JSX que escribimos en <code>React.createElement()</code>, todos los componentes de React deben importar el módulo <code>React</code>. Si omites este paso, tu aplicación producirá un error.</p>
+            <p>La segunda declaración importa un logotipo de <code>'./logo.svg'</code>. Observa el uso de <code>./</code> al principio de la ruta y la extensión <code>.svg</code> al final — estos nos indican que el archivo es local y que no es un archivo JavaScript. De hecho, el archivo logo <code>.svg</code> reside en nuestra carpeta raíz.</p>
+            <p>No hace falta proveer una ruta o extensión al importar el módulo React, ya que este no es un archivo local. En cambio, aparece como una dependencia en nuestro archivo <code>package.json</code>. ¡Ten cuidado con esta distinción mientras trabajas en esta lección!</p>
+            <p>La tercera declaración importa el CSS relacionado con nuestro componente <code>App</code>. Observa que no hay nombre de variable ni de directiva <code>from</code>. Esta sintaxis de importación en particular no es propia de la sintaxis de módulos de JavaScript. Esta proviene de Webpack, la herramienta que <code>create-react-app</code> usa para agrupar todos nuestros archivos JavaScript y enviarlos al navegador.</p>
+            <p>Después de las importaciones, tenemos una función llamada <code>App</code>. Mientras que una mayor parte de la comunidad JavaScript prefiere nombres tipo camel-case como helloWorld, los componentes de React usan nombres de variables tipo pascal-case, como HelloWorld, para dejar en claro que un determinado elemento JSX es un componente de React y no una etiqueta HTML normal. Si llegaras a cambiar el nombre de la función App por app, tu navegador te mostraría un error.</p>
+            <pre><code>function App() {
+    return (
+        &lt;div className="App">
+        &lt;header className="App-header">
+          &lt;img src={logo} className="App-logo" alt="logo" />
+          &lt;p>
+            Edit &lt;code>src/App.js&lt;/code> and save to reload.
+          &lt;/p>
+          &lt;a
+            className="App-link"
+            href="https://reactjs.org"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Learn React
+          &lt;/a>
+        &lt;/header>
+      &lt;/div>
+    );
+  }</code></pre>
+            <p>La función <code>App</code> devuelve una expresión JSX. Esta expresión define lo que tu navegador presenta en última instancia al DOM.</p>
+            <p>Algunos elementos de la expresión tienen atributos, los cuales se escriben igual que en HTML, siguiendo un patrón de atributo="valor". En la línea 3, la etiqueta de apertura <code>&lt;div></code> tiene un atributo <code>className</code>. Este es equivalente al atributo class de HTML, pues dado que JSX es JavaScript, no podemos usar la palabra class —la cual está reservada—, lo que significa que JavaScript ya la usa para un propósito específico y causaría problemas en nuestro código. Algunos otros atributos HTML también se escriben de manera diferente en JSX (de como se escriben en HTML), por el mismo tipo de razón. Los revisaremos a medida que nos crucemos con estos.</p>
+            <p>En la parte inferior del archivo <code>App.js</code>, la declaración <code>export default App</code> hace que nuestro componente <code>App</code> esté disponible para otros módulos.</p>
+        </section>
+
+        <section class="main-section" id="Explorando_el_index">
+            <header>Explorando el index</header>
+            <p>Vamos a abrir el archivo <code>src/index.js</code>, ya que es en este donde el componente <code>App</code> está siendo utilizado. Este archivo es el punto de entrada para nuestra aplicación, e inicialmente luce así:</p>
+            <pre><code>import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import * as serviceWorker from './serviceWorker';
+
+ReactDOM.render(&lt;App />, document.getElementById('root'));
+
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://bit.ly/CRA-PWA
+serviceWorker.unregister();</code></pre>
+            <p>Al gual que <code>App.js</code>, el archivo comienza importando todos los módulos JS y otros activos que necesita para ejecutarse. <code>src/index.css</code> contiene estilos globales que se aplican a toda nuestra aplicación. Podemos ver que nuestro componente <code>App</code> también es importado acá; su importación es posible gracias a la declaración <code>export</code> en la parte inferior de <code>App.js</code>.</p>
+            <p>En la línea 7, se invoca la función <code>ReactDOM.render()</code> de React con dos argumentos:</p>
+            <ul>
+                <li>El componente que queremos renderizar, <code>&lt;App /></code> en este caso.</li>
+                <li>El elemento DOM dentro del cual queremos que se renderice el componente, en este caso, el elemento con un ID de <code>root</code>. Si miras dentro de <code>public/index.html</code>, verás que este es un elemento <code>&lt;div></code> justo dentro de <code>&lt;body></code>.</li>
+            </ul>
+            <p>Todo esto le indica a React que queremos renderizar nuestra aplicación React con el componente <code>App</code> como raíz, o primer componente.</p>
+            <p>Los Service workers son interesantes piezas de código que ayudan al rendimiento de las aplicaciones y permiten que las funciones de tus aplicaciones web funcionen sin conexión, pero estas no están dentro del alcance de este artículo. Puedes eliminar la línea 5, así como las líneas 9 a 12.</p>
+
+        </section>
+
+        <section class="main-section" id="Variables_y_props">
+            <header>Variables y props</header>
+            <p>A continuación, usaremos algunas de nuestras habilidades de JavaScript para lograr sentirnos un poco más cómodos editando componentes y trabajando con datos en React. Hablaremos sobre cómo se usan las variables dentro de JSX, e introduciremos props, que son una forma de pasar datos a un componente (al que luego se puede acceder usando variables).</p>
+        </section>
+
+        <section class="main-section" id="Variables_en_JSX">
+          <header>Variables en JSX</header>
+          <p>De vuelta en <code>App.js</code>, enfoquémonos en la línea 9:</p>
+            <pre><code>&lt;img src={logo} className="App-logo" alt="logo" /></code></pre>
+            <p>Aquí, el valor del atributo src de la etiqueta &lt;img /> está entre llaves. Así es como JSX reconoce las variables. Al encontrarse con {logo}, React sabrá que nos referimos a la importación del logotipo en la línea 2 de nuestra aplicación, y luego recuperará el archivo del logo y lo renderizará.</p>
+            <p>Vamos a intentar crear una variable propia. Antes de la declaración return de App, agrega <code>const subject = "React";</code>. Tu componente App ahora debería verse así:</p>
+            <pre><code>function App() {
+  const subject = "React";
+  return (
+    &lt;div className="App">
+      &lt;header className="App-header">
+        &lt;img src={logo} className="App-logo" alt="logo" />
+        &lt;p>
+          ¡Hola, mundo!
+        &lt;/p>
+      &lt;/header>
+    &lt;/div>
+  );
+}</code></pre>
+            <p>Cambia la línea 8, de manera que se use la variable subject en vez de la palabra "mundo", así:</p>
+            <pre><code>function App() {
+  const subject = "React";
+  return (
+    &lt;div className="App">
+      &lt;header className="App-header">
+        &lt;img src={logo} className="App-logo" alt="logo" />
+        &lt;p>
+          ¡Hola, {subject}!
+        &lt;/p>
+      &lt;/header>
+    &lt;/div>
+  );
+}</code></pre>
+              <p>Al guardar, tu navegador debería mostrar "¡Hola, React!" en vez de "¡Hola, mundo!"</p>
+              <p>Las variables son convenientes, pero la que acabamos de configurar no hace gran uso de las funciones de React. Es allí donde entran los props.</p>
+        </section>
+
+        <section class="main-section" id="Props_de_componentes">
+          <header>Props de componentes</header>
+          <p>Un prop es cualquier dato que se pasa a un componente de React. Los props se escriben dentro de las llamadas a los componentes y utilizan la misma sintaxis que los atributos HTML: prop="value". Abramos <code>index.js</code> y démosle a la llamada de nuestro <code>&lt;App/></code> su primer prop.</p>
+              <p>Agrega un prop de subject a la llamada del componente <App />, con un valor de Clarice. Al terminar, tu código debería verse similar a este:</p>
+              <pre><code>ReactDOM.render(&lt;App subject="Clarice" />, document.getElementById('root'));</code></pre>
+              <p>Volviendo a App.js, vamos a revisar nuevamente la función App como tal, la cual se lee así (acortando la declaración return por razones de brevedad):</p>
+              <pre><code>function App() {
+  const subject = "React";
+  return (
+    // return statement
+  );
+}</code></pre>
+              <p>Cambia la declaración de la función App de manera que tome props como un parámetro, y elimina la constante <code>subject</code>. Al igual que cualquier otro parámetro de una función, puedes pasar props a <code>console.log()</code> para imprimirlos en la consola de tu navegador. Continúa, haciendo esto antes de la declaración return, así:</p>
+              <pre><code>function App(props) {
+  console.log(props);
+  return (
+    // return statement
+  );
+}</code></pre>
+              <p>Guarda tu archivo y revisa la consola JavaScript de tu navegador. Deberías ver registrado algo como esto:</p>
+              <pre><code>Object { subject: "Clarice" }</code></pre>
+              <p>La propiedad subject del objeto corresponde al prop subject que agregamos a la llamada de nuestro componente &lt;App />, y la cadena Clarice corresponde a su valor. Los props de componentes en React siempre se recopilan en objetos de esta manera.</p>
+              <p>Ahora que subject es uno de nuestros props, usémoslo en App.js. Cambia la constante subject de manera que, en vez de definirla como la cadena React, estés leyendo el valor de props.subject. También puedes eliminar console.log(), si así lo quieres.</p>
+              <pre><code>function App(props) {
+  const subject = props.subject;
+  return (
+    // return statement
+  );
+}</code></pre>
+              <p>Una vez guardes, la aplicación debería darte la bienvenida con un "¡Hola, Clarice!". Si regresas a <code>index.js</code>, editas el valor de <code>subject</code>, y guardas, el texto cambiará.</p>
+        </section>
+
+        <section class="main-section" id="Resumen">
+            <header>Resumen</header>
+            <p>Esto nos lleva al final de nuestra introducción a React, la cual incluye cómo instalarlo de manera local, cómo crear una aplicación inicial, y cómo funcionan los conceptos básicos. En el próximo artículo comenzaremos a construir nuestra primera aplicación como tal: una lista de tareas pendientes. Sin embargo, antes de ello, recapitulemos algunas de las cosas que hemos aprendido.</p>
+            <p>En React:</p>
+            <ul>
+                <li>Los componentes pueden importar los módulos que necesitan y deben exportarse a sí mismos al final de sus archivos.</li>
+                <li>Las funciones de componentes se nombran con <code>PascalCase</code>.</li>
+                <li>Puedes leer las variables JSX poniéndolas entre llaves, <code>{así}</code>.</li>
+                <li>Algunos atributos JSX son diferentes a los atributos HTML, para evitar conflictos con las palabras reservadas de JavaScript. Por ejemplo, el atributo class de HTML se convierte en <code>className</code> en JSX. Ten en cuenta que los atributos de varias palabras se nombran con <code>camelCase</code>.</li>
+                <li>Los props se escriben como atributos dentro de las llamadas de componentes y se pasan a los componentes.</li>
+            </ul>
+        </section>
+
+        <section class="main-section" id="Referencia">
+          <header>Referencia</header>
+          <p>Toda la documentación en esta pagina fue tomada de <a href="https://developer.mozilla.org/es/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks/React_getting_started" target="_blank">MDN</a></p>
+        </section>
+    </main>
+
+
+
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+</body>
+</html>
